@@ -1,3 +1,4 @@
+# render.yaml
 services:
   - type: web
     name: disease_prediction
@@ -5,5 +6,4 @@ services:
     plan: free
     autoDeploy: false
     buildCommand: pip install -r requirements.txt
-    # startCommand: uvicorn app.main:app --host 0.0.0.0 --port 
-    startCommand: fastapi run app/main.py
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT

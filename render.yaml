@@ -1,11 +1,17 @@
-# Exported from Render on 2024-11-20T09:13:06Z
+# render.yaml
 services:
-- type: web
-  name: Disease Prediction and Doctor Recommendation System
-  runtime: python
-  repo: https://github.com/Saif-000001/disease_prediction
-  plan: free
-  region: oregon
-  buildCommand: pip install -r requirements.txt
-  startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-version: "1"
+  - type: web
+    name: Disease Prediction and Doctor Recommendation System
+    runtime: python
+    repo: https://github.com/Saif-000001/disease_prediction
+    plan: free
+    region: oregon
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: PYTHON_VERSION
+        value: 3.10.0
